@@ -1,5 +1,5 @@
 {
-  "name": "attendance-server",
+  "name": "track-server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,11 +10,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^5.1.1",
-    "body-parser": "^1.20.2",
+    "bcrypt": "^5.1.0",
     "express": "^4.18.2",
-    "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.1.1",
-    "nodemon": "^3.0.3"
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^6.9.0",
+    "ngrok": "^5.0.0-beta.2",
+    "nodemon": "^2.0.20"
   }
 }
