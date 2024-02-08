@@ -23,7 +23,7 @@ mongoose.set("strictQuery", true);
 
 mongoose.connect(mongoUri);
 mongoose.connection.on("connected", () => {
-  console.log("Connected to construction database");
+  console.log("Connected to attendance database");
 });
 mongoose.connection.on("error", (err) => {
   console.error("Error connecting to mongo", err);
