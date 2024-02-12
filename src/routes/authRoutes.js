@@ -7,7 +7,8 @@ const User = mongoose.model('User');
 const router = express.Router();
 
 router.get('/account', async (req, res) => {
-  const details = await User.find({ userId: req.user._id });
+  const { perscode } = req.body;
+  const details = await User.find({ perscode });
 
   res.send(details);
 });
