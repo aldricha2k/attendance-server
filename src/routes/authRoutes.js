@@ -6,11 +6,10 @@ const User = mongoose.model('User');
 
 const router = express.Router();
 
-router.get('/account', async (req, res) => {
+router.post('/account', async (req, res) => {
   const { perscode } = req.body;
-  const details = await User.findOne({ perscode });
-
-  res.send(details);
+  const account = await User.findOne({ perscode });
+  res.send(account);
 });
 
 router.post('/signin', async (req, res) => {
