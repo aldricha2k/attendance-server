@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.get('/account', async (req, res) => {
   const { perscode } = req.body;
-  const details = await User.find({ perscode });
+  const details = await User.findOne({ perscode });
 
   res.send(details);
 });
