@@ -7,9 +7,13 @@ const User = mongoose.model('User');
 const router = express.Router();
 
 router.get('/account', async (req, res) => {
-  const details = await User.find({ userId: req.user.perscode });
-
-  res.send(details);
+  try{
+    const details = await User.find({ userId: req.user.perscode });
+    res.send(details);  
+  }
+  catch (err) {
+    return res.status(422).send({ err });
+  }
 });
 
 router.post('/signin', async (req, res) => {
