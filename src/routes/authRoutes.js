@@ -12,6 +12,36 @@ router.post('/account', async (req, res) => {
   res.send(account);
 });
 
+router.post('/createaccount', async (req, res) => {
+  const {
+    name,
+    perscode,
+    email,
+    password,
+    division,
+    role
+  } = req.body;
+
+  try {
+    const user = new User({
+      name,
+      perscode,
+      email,
+      password,
+      division,
+      role 
+    });
+    await user.save();
+
+    const accountRole = user.role;
+    const accountPerscode = user.perscode;
+    const accountName = user.name;
+    res.send({ role: accountRole, perscode: accountPerscode, name: accountName });
+  } catch (err) {
+    return res.status(422).send(err.message);
+  }
+});
+
 router.post('/signin', async (req, res) => {
   const { email, password } = req.body;
 
