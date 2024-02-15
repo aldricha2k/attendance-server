@@ -66,4 +66,40 @@ router.post('/signin', async (req, res) => {
   }
 });
 
+router.put('/account', async (req, res) => {
+  const { perscode, balance, payment, installment } = req.body;
+
+  try{
+      const updateUser = await User.findOneAndUpdate(
+          { perscode },
+          { 
+              balance,
+              payment,
+              installment
+          }
+      )
+      res.send(updateUser);
+  }
+  catch(err){
+      res.status(500).send({ error: err});
+  }
+}),
+
+router.patch('/account', async (req, res) => {
+  const { perscode, balance } = req.body;
+
+  try{
+      const updateUser = await User.findOneAndUpdate(
+          { perscode },
+          { 
+              balance,
+          }
+      )
+      res.send(updateUser);
+  }
+  catch(err){
+      res.status(500).send({ error: err});
+  }
+}),
+
 module.exports = router;
