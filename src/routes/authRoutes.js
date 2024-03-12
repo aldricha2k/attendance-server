@@ -12,6 +12,11 @@ router.post('/account', async (req, res) => {
   res.send(account);
 });
 
+router.post('/account_list', async (req, res) => {
+  const account = await User.find();
+  res.send(account);
+});
+
 router.post('/createaccount', async (req, res) => {
   const {
     name,
@@ -60,7 +65,8 @@ router.post('/signin', async (req, res) => {
     const role = user.role;
     const perscode = user.perscode;
     const name = user.name;
-    res.send({ token, role, perscode, name });
+    const account = await User.findOne({ perscode });
+    res.send({ token, role, perscode, name, account });
   } catch (err) {
     return res.status(422).send({ error: 'Invalid password.' });
   }

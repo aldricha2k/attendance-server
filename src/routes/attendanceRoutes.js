@@ -8,9 +8,9 @@ const router = express.Router();
 
 router.get('/attendance', async (req, res) => {
     const details = await Attendance.find();
-
     res.send(details);
-})
+});
+
 router.post('/attendance', async (req, res) => {
     const {
       perscode,
@@ -39,7 +39,6 @@ router.post('/attendance', async (req, res) => {
       deduction
     });
     await attendance.save();
-
     res.send(attendance);
     } catch (err) {
     return res.status(422).send(err.message);
