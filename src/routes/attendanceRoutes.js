@@ -63,5 +63,13 @@ router.put('/attendance', async (req, res) => {
   }
 });
 
+  router.put('/delete_attendance', async (req, res) => {
+    const { perscode } = req.body;
+
+      const deleteAttendance = await Attendance.deleteMany(
+        { perscode }
+      )
+    res.send(deleteAttendance);
+  })
 
 module.exports = router;

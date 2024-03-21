@@ -62,11 +62,19 @@ router.post('/signin', async (req, res) => {
   try {
     await user.comparePassword(password);
     const token = jwt.sign({ userId: user._id }, 'MY_SECRET_KEY');
-    const role = user.role;
     const perscode = user.perscode;
-    const name = user.name;
     const account = await User.findOne({ perscode });
-    res.send({ token, role, perscode, name, account });
+    res.send({ 
+      token, 
+      name: account.name,
+      perscode,
+      email: account.email,
+      division: account.division,
+      role: account.role,
+      balance: account.balance,
+      installment: account.installment,
+      payment: account.payment
+    });
   } catch (err) {
     return res.status(422).send({ error: 'Invalid password.' });
   }
