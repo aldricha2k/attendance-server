@@ -80,7 +80,36 @@ router.post('/signin', async (req, res) => {
   }
 });
 
-router.put('/account', async (req, res) => {
+router.patch('/update_account', async (req, res) => {
+  const {
+    name,
+    perscode,
+    email,
+    password,
+    division,
+    role
+  } = req.body;
+
+  try{
+      const updateUser = await User.findOneAndUpdate(
+          { perscode },
+          { 
+            name,
+            perscode,
+            email,
+            password,
+            division,
+            role 
+          }
+      )
+      res.send(updateUser);
+  }
+  catch(err){
+      res.status(500).send({ error: err});
+  }
+}),
+
+router.patch('/account', async (req, res) => {
   const { perscode, balance, payment, installment } = req.body;
 
   try{
