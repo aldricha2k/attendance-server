@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
-
+const bcrypt = require('bcrypt');
 const User = mongoose.model('User');
 
 const router = express.Router();
@@ -91,18 +91,20 @@ router.patch('/update_account', async (req, res) => {
   } = req.body;
 
   try{
-      const updateUser = await User.findOneAndUpdate(
-          { perscode },
-          { 
-            name,
-            perscode,
-            email,
-            password,
-            division,
-            role 
-          }
-      )
-      res.send(updateUser);
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const updateUser = await User.findOneAndUpdate(
+      { perscode },
+      { 
+        name,
+        perscode,
+        password: hashedPassword,
+        email,
+        password,
+        division,
+        role 
+      }
+    )
+    res.send(updateUser);
   }
   catch(err){
       res.status(500).send({ error: err});
