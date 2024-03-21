@@ -109,6 +109,19 @@ router.patch('/update_account', async (req, res) => {
   }
 }),
 
+router.patch('/delete_account', async (req, res) => {
+  const { perscode, password } = req.body;
+
+  try{
+      const checkUser = await User.find({ perscode })
+      await checkUser.comparePassword(password);
+      await User.findOneAndDelete({ perscode });
+    }
+  catch(err){
+      res.status(500).send({ error: err});
+  }
+}),
+
 router.patch('/account', async (req, res) => {
   const { perscode, balance, payment, installment } = req.body;
 
