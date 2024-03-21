@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 const User = mongoose.model('User');
 
 const router = express.Router();
@@ -89,20 +90,19 @@ router.patch('/update_account', async (req, res) => {
     role
   } = req.body;
 
+  const hash = await bcrypt.hash(password, 10);
   try{
     const updateUser = await User.findOneAndUpdate(
       { perscode },
       { 
         name,
         perscode,
-        password,
         email,
-        password,
+        password: hash,
         division,
         role 
       }
     )
-    await updateUser.save();
     res.send(updateUser);
   }
   catch(err){
