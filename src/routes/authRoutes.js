@@ -114,9 +114,9 @@ router.patch('/delete_account', async (req, res) => {
   const { perscode, password } = req.body;
 
   try{
-      const checkUser = await User.findOne({ perscode })
-      console.log(checkUser);
-      console.log(password);
+      const checkUser = await User.findOne({ perscode });
+      await checkUser.comparePassword(password);
+      await User.deleteOne({ perscode });
     }
   catch(err){
       res.status(500).send({ error: err});
