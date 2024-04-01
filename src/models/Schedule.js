@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
 const scheduleSchema = new mongoose.Schema({
-    date: [{
         id: {
             type: mongoose.Schema.Types.ObjectId,
             default: mongoose.Types.ObjectId
@@ -10,6 +9,9 @@ const scheduleSchema = new mongoose.Schema({
             type: String,
         },
         summary: {
+            type: String,
+        },
+        date: {
             type: String,
         },
         start: {
@@ -21,7 +23,6 @@ const scheduleSchema = new mongoose.Schema({
         perscode: {
             type: String
         }
-    }]
   });
 
   mongoose.model('Schedule', scheduleSchema);
