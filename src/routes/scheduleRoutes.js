@@ -24,7 +24,8 @@ router.post('/schedule', async (req, res) => {
             end,
             perscode
         });
-        await schedule.save;
+        await schedule.save();
+        
         res.send(schedule);
     }
     catch(err){
