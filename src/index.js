@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 
 const attendanceRoutes = require('./routes/attendanceRoutes');
 const authRoutes = require("./routes/authRoutes");
+const scheduleRoutes = require("./routes/scheduleRoutes");
 const requireAuth = require("./middlewares/requireAuth");
 
 const app = express();
@@ -15,6 +16,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(authRoutes);
 app.use(attendanceRoutes);
+app.use(scheduleRoutes);
 
 const mongoUri = 'mongodb+srv://Aldrich:passwordpassword@cluster0.6tkkc1r.mongodb.net/';
 
