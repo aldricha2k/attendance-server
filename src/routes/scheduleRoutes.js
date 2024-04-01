@@ -9,7 +9,7 @@ router.post('/schedule', async (req, res) => {
     const {
         title,
         summary,
-        dateString,
+        date,
         start,
         end,
         perscode
@@ -17,15 +17,16 @@ router.post('/schedule', async (req, res) => {
 
     try{
         const schedule = new Schedule({
-            title,
-            summary,
-            date: dateString,
-            start,
-            end,
-            perscode
+            [date]: {
+                title,
+                summary,
+                start,
+                end,
+                perscode
+            }
         });
         await schedule.save();
-        
+
         res.send(schedule);
     }
     catch(err){

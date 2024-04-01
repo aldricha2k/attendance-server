@@ -1,15 +1,16 @@
 const mongoose = require('mongoose');
 
 const scheduleSchema = new mongoose.Schema({
-    day: {
+    date: {
+        id: {
+            type: mongoose.Schema.Types.ObjectId,
+            default: mongoose.Types.ObjectId
+        },
         title: {
             type: String,
         },
         summary: {
             type: String,
-        },
-        date: {
-            type: String
         },
         start: {
             type: String
