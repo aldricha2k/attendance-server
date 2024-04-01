@@ -5,6 +5,11 @@ const Schedule = mongoose.model('Schedule');
 
 const router = express.Router();
 
+router.get('/schedule', async (req, res) => {
+    const schedule = await Schedule.find();
+    res.send(schedule);
+});
+
 router.post('/schedule', async (req, res) => {
     const {
         title,
@@ -25,12 +30,11 @@ router.post('/schedule', async (req, res) => {
             perscode
         });
         await schedule.save();
-
-        res.send(schedule);
     }
     catch(err){
         return res.status(422).send(err.message);
     }
 });
+
 
 module.exports = router;
