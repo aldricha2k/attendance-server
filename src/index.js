@@ -1,5 +1,6 @@
 require("./models/User");
 require("./models/Attendance");
+require("./models/Schedule");
 
 const express = require('express');
 const mongoose = require('mongoose');
