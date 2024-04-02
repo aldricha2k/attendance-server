@@ -4,6 +4,9 @@ const scheduleSchema = new mongoose.Schema({
         title: {
             type: String,
         },
+        facility:{
+            type: String,
+        },
         summary: {
             type: String,
         },

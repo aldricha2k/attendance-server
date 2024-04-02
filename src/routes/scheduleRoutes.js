@@ -13,6 +13,7 @@ router.get('/schedule', async (req, res) => {
 router.post('/schedule', async (req, res) => {
     const {
         title,
+        facility,
         summary,
         date,
         start,
@@ -23,6 +24,7 @@ router.post('/schedule', async (req, res) => {
     try{
         const schedule = new Schedule({
             title,
+            facility,
             summary,
             date,
             start,
