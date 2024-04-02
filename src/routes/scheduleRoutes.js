@@ -51,7 +51,7 @@ router.patch('/schedule', async (req, res) => {
     } = req.body;
 
     try{
-        const schedule = await Schedule.findOneAndUpdate({
+        await Schedule.findOneAndUpdate({
             _id: meetId
         },
         {
@@ -63,8 +63,9 @@ router.patch('/schedule', async (req, res) => {
             end,
             perscode
         });
-        await schedule.save();
-    }
+        const schedule = await Schedule.find();
+        res.send(schedule);
+        }
     catch(err){
         return res.status(422).send(err.message);
     }
@@ -75,7 +76,9 @@ router.put('/schedule', async (req, res) => {
   
     try{
         await Schedule.deleteOne({ _id: meetId });
-    }
+        const schedule = await Schedule.find();
+        res.send(schedule);
+        }
     catch(err){
         res.status(500).send({ error: err});
     }
