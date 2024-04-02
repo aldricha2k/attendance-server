@@ -38,5 +38,36 @@ router.post('/schedule', async (req, res) => {
     }
 });
 
+router.post('/schedule', async (req, res) => {
+    const {
+        title,
+        meetId,
+        facility,
+        summary,
+        date,
+        start,
+        end,
+        perscode
+    } = req.body;
+
+    try{
+        const schedule = await Schedule.findOneAndUpdate({
+            _id: meetId
+        },
+        {
+            title,
+            facility,
+            summary,
+            date,
+            start,
+            end,
+            perscode
+        });
+        await schedule.save();
+    }
+    catch(err){
+        return res.status(422).send(err.message);
+    }
+});
 
 module.exports = router;
