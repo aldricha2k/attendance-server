@@ -70,4 +70,14 @@ router.patch('/schedule', async (req, res) => {
     }
 });
 
+router.put('/schedule', async (req, res) => {
+    const { meetId } = req.body;
+  
+    try{
+        await Schedule.deleteOne({ _id: meetId });
+    }
+    catch(err){
+        res.status(500).send({ error: err});
+    }
+  }),
 module.exports = router;
