@@ -38,7 +38,7 @@ router.post('/schedule', async (req, res) => {
     }
 });
 
-router.post('/schedule', async (req, res) => {
+router.patch('/schedule', async (req, res) => {
     const {
         title,
         meetId,
