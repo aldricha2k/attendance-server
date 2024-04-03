@@ -50,7 +50,8 @@ router.patch('/schedule', async (req, res) => {
         date,
         start,
         end,
-        perscode
+        perscode,
+        slot
     } = req.body;
 
     try{
@@ -64,7 +65,8 @@ router.patch('/schedule', async (req, res) => {
             date,
             start,
             end,
-            perscode
+            perscode,
+            max_slot: slot
         });
         res.send(schedule);
     }
