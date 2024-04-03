@@ -18,7 +18,8 @@ router.post('/schedule', async (req, res) => {
         start, 
         end, 
         summary, 
-        perscode 
+        perscode,
+        slot
     } = req.body;
     
     try {
@@ -29,7 +30,8 @@ router.post('/schedule', async (req, res) => {
             start, 
             end, 
             summary, 
-            perscode 
+            perscode,
+            max_slot: slot
         });
         await schedule.save();
         res.send(schedule);

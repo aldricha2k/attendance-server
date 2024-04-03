@@ -21,6 +21,13 @@ const scheduleSchema = new mongoose.Schema({
         },
         perscode: {
             type: String
+        },
+        max_slot:{
+            type: Number
+        },
+        avail_slot:{
+            type: Number,
+            default: 0
         }
   });
 
