@@ -14,9 +14,9 @@ router.post('/schedule', async (req, res) => {
     const { 
         title, 
         facility, 
-        momentDate, 
-        startStr, 
-        endStr, 
+        date, 
+        start, 
+        end, 
         summary, 
         perscode 
     } = req.body;
@@ -25,9 +25,9 @@ router.post('/schedule', async (req, res) => {
         const schedule = new Schedule({
             title, 
             facility, 
-            momentDate, 
-            startStr, 
-            endStr, 
+            date, 
+            start, 
+            end, 
             summary, 
             perscode 
         });
