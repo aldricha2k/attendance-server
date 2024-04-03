@@ -98,16 +98,12 @@ router.patch('/slot', async (req, res) => {
         perscode, 
     } = req.body;
 
-    const newAttendee = {
-        name,
-        perscode,
-    }
+    const newAttendee = { name, perscode }
     
     try{
         const schedule = await Schedule.findOneAndUpdate({
             _id: meetId
         }, {
-            avail_slot,
             $push: {
                 attendees: newAttendee
             },
