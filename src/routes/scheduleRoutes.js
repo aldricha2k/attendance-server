@@ -115,5 +115,27 @@ router.patch('/slot', async (req, res) => {
     catch(err){
         res.status(500).send({ error: err });
     }
-})
+});
+
+router.put('/slot', async (req, res) => {
+    const {
+        meetId,
+        perscode,
+    } = req.body;
+   
+    try{
+        const schedule = await Schedule.findOneAndUpdate({
+            _id: meetId
+        }, {
+            $pull: {
+                attendees: { perscode:perscode }
+            },
+            $inc: { taken_slot: -1}
+        });
+        res.send(schedule);
+    }
+    catch(e){
+        res.send(500).send({ error: err});
+    }
+}) 
 module.exports = router;
