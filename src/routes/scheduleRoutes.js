@@ -54,7 +54,7 @@ router.patch('/schedule', async (req, res) => {
         end,
         name,
         perscode,
-        slot
+        slot,
     } = req.body;
 
     try{
@@ -89,5 +89,35 @@ router.put('/schedule', async (req, res) => {
     catch(err){
         res.status(500).send({ error: err});
     }
-  }),
+}),
+
+router.patch('/slot', async (req, res) => {
+    const { 
+        meetId, 
+        name, 
+        perscode, 
+        avail_slot
+    } = req.body;
+
+    const newAttendee = {
+        name,
+        perscode,
+    }
+    
+    try{
+        const schedule = await Schedule.findOneAndUpdate({
+            _id: meetId
+        }, {
+            avail_slot,
+            $push: {
+                attendees: newAttendee
+            }
+        });
+
+        res.send(schedule);
+    }
+    catch(err){
+        res.status(500).send({ error: err });
+    }
+})
 module.exports = router;
