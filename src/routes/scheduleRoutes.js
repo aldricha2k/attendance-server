@@ -11,29 +11,29 @@ router.get('/schedule', async (req, res) => {
 });
 
 router.post('/schedule', async (req, res) => {
-    const {
-        title,
-        facility,
-        summary,
-        date,
-        start,
-        end,
-        perscode
+    const { 
+        title, 
+        facility, 
+        momentDate, 
+        startStr, 
+        endStr, 
+        summary, 
+        perscode 
     } = req.body;
-
-    try{
+    
+    try {
         const schedule = new Schedule({
-            title,
-            facility,
-            summary,
-            date,
-            start,
-            end,
-            perscode
+            title, 
+            facility, 
+            momentDate, 
+            startStr, 
+            endStr, 
+            summary, 
+            perscode 
         });
         await schedule.save();
-    }
-    catch(err){
+    } 
+    catch (err) {
         return res.status(422).send(err.message);
     }
 });
