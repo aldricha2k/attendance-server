@@ -75,7 +75,8 @@ router.put('/schedule', async (req, res) => {
     const { meetId } = req.body;
   
     try{
-        await Schedule.deleteOne({ _id: meetId });
+        const schedule = await Schedule.deleteOne({ _id: meetId });
+        res.send(schedule);
     }
     catch(err){
         res.status(500).send({ error: err});
