@@ -111,7 +111,8 @@ router.patch('/slot', async (req, res) => {
             avail_slot,
             $push: {
                 attendees: newAttendee
-            }
+            },
+            $inc: { taken_slot: +1 }
         });
 
         res.send(schedule);

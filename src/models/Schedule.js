@@ -28,7 +28,7 @@ const scheduleSchema = new mongoose.Schema({
     max_slot:{
         type: Number
     },
-    avail_slot:{
+    taken_slot:{
         type: Number,
         default: 0
     },
