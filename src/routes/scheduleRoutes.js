@@ -18,6 +18,7 @@ router.post('/schedule', async (req, res) => {
         start, 
         end, 
         summary, 
+        name,
         perscode,
         slot
     } = req.body;
@@ -30,6 +31,7 @@ router.post('/schedule', async (req, res) => {
             start, 
             end, 
             summary, 
+            name,
             perscode,
             max_slot: slot
         });
@@ -50,6 +52,7 @@ router.patch('/schedule', async (req, res) => {
         date,
         start,
         end,
+        name,
         perscode,
         slot
     } = req.body;
@@ -65,6 +68,7 @@ router.patch('/schedule', async (req, res) => {
             date,
             start,
             end,
+            name,
             perscode,
             max_slot: slot
         });

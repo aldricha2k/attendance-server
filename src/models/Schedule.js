@@ -19,6 +19,9 @@ const scheduleSchema = new mongoose.Schema({
         end: {
             type: String
         },
+        name: {
+            type: String,
+        },
         perscode: {
             type: String
         },
