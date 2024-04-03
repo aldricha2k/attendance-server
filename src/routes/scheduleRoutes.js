@@ -96,7 +96,6 @@ router.patch('/slot', async (req, res) => {
         meetId, 
         name, 
         perscode, 
-        avail_slot
     } = req.body;
 
     const newAttendee = {
