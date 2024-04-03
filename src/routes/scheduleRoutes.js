@@ -32,6 +32,7 @@ router.post('/schedule', async (req, res) => {
             perscode 
         });
         await schedule.save();
+        res.send(schedule);
     } 
     catch (err) {
         return res.status(422).send(err.message);
