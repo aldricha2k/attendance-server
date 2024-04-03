@@ -64,6 +64,7 @@ router.patch('/schedule', async (req, res) => {
             end,
             perscode
         });
+        res.send(schedule);
     }
     catch(err){
         return res.status(422).send(err.message);
