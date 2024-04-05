@@ -34,7 +34,8 @@ const scheduleSchema = new mongoose.Schema({
     },
     attendees: [{
         name: String,
-        perscode: String
+        perscode: String,
+        chosen_slot: Number
     }]
 });
 
