@@ -1,3 +1,4 @@
+
 const express = require('express');
 const mongoose = require('mongoose');
 
@@ -129,7 +130,7 @@ router.put('/slot', async (req, res) => {
             _id: meetId
         }, {
             $pull: {
-                attendees: { perscode:perscode }
+                attendees: { perscode }
             },
             $inc: { taken_slot: -1}
         });

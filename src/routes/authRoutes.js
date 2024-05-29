@@ -27,12 +27,14 @@ router.post('/createaccount', async (req, res) => {
     role
   } = req.body;
 
+  const hash = await bcrypt.hash(password, 10);
+
   try {
     const user = new User({
       name,
       perscode,
       email,
-      password,
+      password: hash,
       division,
       role 
     });
